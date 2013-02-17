@@ -22,7 +22,7 @@ public:
   ~Parser();
 
   void load(char file[]);
-  void default();
+  void loadDefault();
 };
 
 #endif
