@@ -1,9 +1,7 @@
 #ifndef RAYTRACER_H
 #define RAYTRACER_H
 
-#include <list>
-#include "object.hpp"
-#include "vec3.hpp"
+#include "parser.hpp"
 #include "contiguousdatamatrix.hpp"
 #include "light.hpp"
 
