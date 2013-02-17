@@ -26,10 +26,17 @@ public:
 
   // Produit vectoriel
   static void cross(vec3& u, vec3& v, vec3& res);
-  inline void cross(const vec3& v, vec3& res);
+  inline void cross(const vec3& v, vec3& res){
+    res.m_x =m_y*v.m_z - m_z*v.m_y;
+    res.m_y =m_z*v.m_x - m_x*v.m_z;
+    res.m_z =m_x*v.m_y - m_y*v.m_x;
+  }
+  
   // Produit scalaire
   static double dot(vec3& u, vec3& v);
-  inline double dot(const vec3& v);
+  inline double dot(const vec3& v){
+    return m_x*v.m_x + m_y*v.m_y + m_z*v.m_z;
+  }
 
   // renvoie un vecteur de double contigus [x|y|z] alloué dans le tas
   double* constData();
