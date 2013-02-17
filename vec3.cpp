@@ -42,18 +42,8 @@ void vec3::cross(vec3& u, vec3& v, vec3& res){
 	 u.x()*v.y() - u.y()*v.x());
 }
 
-void vec3::cross(const vec3& v, vec3& res){
-  res.m_x =m_y*v.m_z - m_z*v.m_y;
-  res.m_y =m_z*v.m_x - m_x*v.m_z;
-  res.m_z =m_x*v.m_y - m_y*v.m_x;
-}
-
 double vec3::dot(vec3& u, vec3& v){
   return u.x()*v.x() + u.y()*v.y() + u.z()*v.z();
-}
-
-double vec3::dot(const vec3& v){
-  return m_x*v.m_x + m_y*v.m_y + m_z*v.m_z;
 }
 
 std::ostream& operator<<(std::ostream& out, vec3& v){
