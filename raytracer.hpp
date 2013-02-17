@@ -9,13 +9,15 @@ class RayTracer{
 private:
   vec3 m_eye;
   vec3 m_ray;
+  std::list<Object> m_object;
+  std::list<Light> m_light;
   ContiguousDataMatrix<vec3> m_image;
   unsigned int m_width;
   unsigned int m_heigth;
 
 public:
   RayTracer();
-  RayTracer(std::list<Object> o, std::list<Light> l);
+  RayTracer(std::list<Object>& o, std::list<Light>& l);
   ~RayTracer();
   ContiguousDataMatrix<vec3>& render();
 };
