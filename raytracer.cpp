@@ -6,7 +6,7 @@ RayTracer::RayTracer():
 {
 }
 
-RayTracer::RayTracer(std::list<Object> o, std::list<Light> l):
+RayTracer::RayTracer(std::list<Object>& o, std::list<Light>& l):
   m_width(800),
   m_heigth(600)
 {
