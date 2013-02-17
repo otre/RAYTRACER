@@ -1,14 +1,12 @@
 #include "raytracer.hpp"
 
-RayTracer::RayTracer():
-  m_width(800),
-  m_heigth(600)
-{
-}
+const unsigned int RayTracer::WIDTH=800;
+const unsigned int RayTracer::HEIGHT=600;
 
-RayTracer::RayTracer(std::list<Object>& o, std::list<Light>& l):
-  m_width(800),
-  m_heigth(600)
+RayTracer::RayTracer():
+  m_width(WIDTH),
+  m_heigth(HEIGHT),
+  m_image(WIDTH, HEIGHT)
 {
 }
 
