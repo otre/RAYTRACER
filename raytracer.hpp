@@ -3,22 +3,28 @@
 
 #include "parser.hpp"
 #include "contiguousdatamatrix.hpp"
-#include "light.hpp"
 
 class RayTracer{
 private:
-  vec3 m_eye;
+  // rayon courant
   vec3 m_ray;
-  std::list<Object> m_object;
-  std::list<Light> m_light;
+  // parser de la scene
+  Parser& m_parser;
+  // image de rendu
   ContiguousDataMatrix<vec3> m_image;
-  unsigned int m_width;
-  unsigned int m_heigth;
 
 public:
-  RayTracer();
-  RayTracer(std::list<Object>& o, std::list<Light>& l);
+  // largeur par defaut de l'image
+  static const unsigned int WIDTH;
+  // hauteur par defaut de l'image
+  static const unsigned int HEIGHT;
+
+  // configure le raytracer a partir d'un parser
+  RayTracer(Parser& p);
+  // destructeur
   ~RayTracer();
+
+  // calcul du rendu
   ContiguousDataMatrix<vec3>& render();
 };
 
