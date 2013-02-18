@@ -1,21 +1,17 @@
 #include "light.hpp"
 
-Light::Light():
-  m_x(0),
-  m_y(0),
-  m_z(0)
-{
+Light::Light(){
 }
 
 Light::Light(double x, double y, double z):
-  m_x(x),
-  m_y(y),
-  m_z(z)
+  m_position(x, y, z)
+{
+}
+
+Light::Light(const vec3& position):
+  m_position(position)
 {
 }
 
 Light::~Light(){
-  m_x =0;
-  m_y =0;
-  m_z =0;
 }

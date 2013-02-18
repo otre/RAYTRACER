@@ -1,5 +1,5 @@
-#ifndef PLANE_H
-#define PLANE_H
+#ifndef PLANE_HPP
+#define PLANE_HPP
 
 #include "object.hpp"
 
@@ -24,4 +24,4 @@ class Plane : public Object{
   bool intersect(const vec3& ray, const vec3& eye, vec3& i);
 };
 
-#endif // PLANE_H
+#endif // PLANE_HPP

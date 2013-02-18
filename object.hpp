@@ -1,5 +1,5 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef OBJECT_HPP
+#define OBJECT_HPP
 
 #include "vec3.hpp"
 
@@ -11,4 +11,4 @@ class Object{
   virtual bool intersect(const vec3& ray, const vec3& eye, vec3& i)=0;
 };
 
-#endif // OBJECT_H
+#endif // OBJECT_HPP

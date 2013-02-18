@@ -1,0 +1,9 @@
+#include "scene.hpp"
+
+void Parser::loadDefault(){
+  m_eye.fill(3);
+  m_object.push_back(new Sphere());
+  m_light.push_back(new Light(3, 0, 0));
+  m_width =800;
+  m_height =600;
+}

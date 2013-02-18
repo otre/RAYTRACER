@@ -1,5 +1,5 @@
-#ifndef MATRICE_H
-#define MATRICE_H
+#ifndef CONTIGUOUSDATAMATRIX_HPP
+#define CONTIGUOUSDATAMATRIX_HPP
 
 #include <iostream>
 
@@ -202,7 +202,7 @@ public:
   }
   
   template <class K>
-  ContiguousDataMatrix<T>& operator*(K k){
+  ContiguousDataMatrix<T>& operator*(K& k){
     if(m_allocated){
       for(i=0; i<m_width; i++){
 	for(j=0; j<m_height; j++){
@@ -215,12 +215,12 @@ public:
   }
 
   template <class K>
-  friend ContiguousDataMatrix<T>& operator*(K k, ContiguousDataMatrix<T>& m){    
+  friend ContiguousDataMatrix<T>& operator*(K& k, ContiguousDataMatrix<T>& m){    
     return m*k;
   }
 
   template <class K>
-  ContiguousDataMatrix<T>& operator/(K k){
+  ContiguousDataMatrix<T>& operator/(K& k){
     if(m_allocated){
       for(i=0; i<m_width; i++){
 	for(j=0; j<m_height; j++){
@@ -233,7 +233,7 @@ public:
   }
 
   template <class K>
-  friend ContiguousDataMatrix<T>& operator/(K k, ContiguousDataMatrix<T>& m){    
+  friend ContiguousDataMatrix<T>& operator/(K& k, ContiguousDataMatrix<T>& m){    
     return m/k;
   }
 
@@ -243,6 +243,7 @@ public:
 	for(unsigned int j=0; j<m.height(); j++){
 	  out << m.get(i,j);
 	}
+	out << std::endl;
       }
     }
 
@@ -270,4 +271,4 @@ public:
   }
 };
 
-#endif // MATRICE_H
+#endif // CONTIGUOUSDATAMATRIX_HPP

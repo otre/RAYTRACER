@@ -48,7 +48,7 @@ double vec3::dot(vec3& u, vec3& v){
 
 std::ostream& operator<<(std::ostream& out, vec3& v){
 
-  out << v.x() <<v.y() <<v.z();
+  out << v.x() << " " << v.y() << " "<<v.z();
 
   return out;
 }

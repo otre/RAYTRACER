@@ -1,12 +1,11 @@
 #include "raytracer.hpp"
 
 int main(){
-  ContiguousDataMatrix<vec3> out;
-  Parser parser;
-  RayTracer raytracer(parser);
+  char file[]="render.ppm";
+  Scene scene;
+  RayTracer raytracer(scene);
 
-  parser.loadDefault();
-  out =raytracer.render();
+  raytracer.renderToPPM(file);
 
   return 0;
 }

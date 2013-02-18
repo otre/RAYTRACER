@@ -1,5 +1,5 @@
-#ifndef SPHERE_H
-#define SPHERE_H
+#ifndef SPHERE_HPP
+#define SPHERE_HPP
 
 #include "object.hpp"
 
@@ -24,4 +24,4 @@ class Sphere : public Object{
   bool intersect(const vec3& ray, const vec3& eye, vec3& i);
 };
 
-#endif // SPHERE_H
+#endif // SPHERE_HPP
