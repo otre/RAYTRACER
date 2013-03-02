@@ -1,5 +1,8 @@
 #include "scene.hpp"
 
+const unsigned int Scene::WIDTH=800;
+const unsigned int Scene::HEIGHT=600;
+
 Scene::Scene():
   m_width(0),
   m_height(0)
@@ -19,9 +22,8 @@ Scene::~Scene(){
 }
 
 void Scene::loadDefault(){
-  m_camera.move(3,3,3);
   m_object.push_back(new Sphere());
   m_light.push_back(new Light(3, 0, 0));
-  m_width =800;
-  m_height =600;
+  m_width =WIDTH;
+  m_height =HEIGHT;
 }

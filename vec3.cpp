@@ -16,6 +16,13 @@ vec3::vec3(const vec3& v):
 {
 }
 
+vec3::vec3(const vec3& a, const vec3& b):
+  m_x(b.m_x - a.m_x),
+  m_y(b.m_y - a.m_y),
+  m_z(b.m_z - a.m_z)
+{
+}
+
 vec3::vec3(double t):
   m_x(t),
   m_y(t),

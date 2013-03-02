@@ -5,6 +5,7 @@ int main(){
   Scene scene;
   RayTracer raytracer(scene);
 
+  scene.loadDefault();
   raytracer.renderToPPM(file);
 
   return 0;

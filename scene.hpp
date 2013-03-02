@@ -2,6 +2,7 @@
 #define SCENE_HPP
 
 #include <list>
+#include <fstream>
 #include "object.hpp"
 #include "sphere.hpp"
 #include "plane.hpp"
@@ -20,6 +21,11 @@ private:
   unsigned int m_width, m_height;
 
 public:
+  // largeur par defaut de l'image
+  static const unsigned int WIDTH;
+  // hauteur par defaut de l'image
+  static const unsigned int HEIGHT;
+
   // prepare une scene vide
   Scene();
   // destructeur
@@ -35,7 +41,17 @@ public:
 
   // renvoie la heuteur de la sortie
   inline unsigned int height(){
-    return m_width;
+    return m_height;
+  }
+
+  // renvoie la position de la camera
+  inline vec3& position(){
+    return m_camera.position();
+  }
+
+  // renvoie le plan de projection de la camera
+  inline void project(vec3& u, vec3& v, vec3& origin){
+    m_camera.project(m_width, m_height, u, v, origin);
   }
 };
 

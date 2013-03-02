@@ -14,6 +14,8 @@ public:
   vec3();
   // Cree un vecteur a partir d'une reference
   vec3(const vec3& v);
+  // Cree un vecteur a partir de deux coordonnees
+  vec3(const vec3& a, const vec3& b);
   // Cree un vecteur composé de champs constant t
   vec3(double t);
   // Cree le vecteur v(x,y,z)
@@ -47,7 +49,7 @@ public:
     double l;
     
     l =length();
-    if(l > 0){
+    if(!isOne(l)){
       m_x /=l;
       m_y /=l;
       m_z /=l;
@@ -88,6 +90,11 @@ public:
     return (fabs(d) < EPSILON);
   }
 
+  // teste l'approximation du zero de d 
+  inline bool isOne(double d){
+    return (fabs(d-1) < EPSILON);
+  }
+
   // renvoie la composante x du vecteur
   inline double x(){
     return m_x;
@@ -120,6 +127,12 @@ public:
     this->m_x =x;
     this->m_y =y;
     this->m_z =z;
+  }
+  // arrondi toutes les composantes du vecteur
+  inline void toInt(){
+    m_x =floor(m_x);
+    m_y =floor(m_y);
+    m_z =floor(m_z);
   }
 };
 
