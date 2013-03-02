@@ -21,7 +21,7 @@ class Plane : public Object{
   ~Plane();
 
   // renvoie le resultat du test d'intersection i avec le plan
-  bool intersect(const vec3& ray, const vec3& eye, vec3& i);
+  bool isIntersected(const vec3& ray, const vec3& eye, vec3& i);
 };
 
 #endif // PLANE_HPP
