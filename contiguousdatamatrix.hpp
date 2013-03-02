@@ -14,7 +14,6 @@ private:
   unsigned int i, j; 
 
 public:
- 
   ContiguousDataMatrix():
     m_data(NULL),
     m_width(0),
