@@ -19,7 +19,7 @@ Plane::~Plane(){
   m_delta =0;
 }
 
-bool Plane::intersect(const vec3& ray, const vec3& eye, vec3& i){
+bool Plane::isIntersected(const vec3& ray, const vec3& eye, vec3& i){
   bool ret=false;
 
   return ret;
