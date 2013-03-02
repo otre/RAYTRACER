@@ -19,7 +19,7 @@ Sphere::~Sphere(){
   m_rayon =0;
 }
 
-bool Sphere::intersect(const vec3& ray, const vec3& eye, vec3& i){
+bool Sphere::isIntersected(const vec3& ray, const vec3& eye, vec3& i){
   bool ret=false;
 
   return ret;
