@@ -40,6 +40,7 @@ void RayTracer::renderToPPM(char file[]){
 	  color =m_scene.shade(m_ray, i, o);
 	  color =color * 255;
 	  color.toInt();
+	  vec3::max(vec3(), color, color);
 	  out << color  << " ";
 	}
 	else{

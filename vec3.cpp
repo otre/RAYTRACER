@@ -57,6 +57,12 @@ double vec3::distance(const vec3& u, const vec3& v){
   return sqrt(u.x()*v.x() + u.y()*v.y() + u.z()*v.z());
 }
 
+void vec3::max(const vec3& a, const vec3& b, vec3& res){
+  res.set(std::max(a.x(), b.x()),
+	  std::max(a.y(), b.y()),
+	  std::max(a.z(), b.z()));
+}
+
 std::ostream& operator<<(std::ostream& out, vec3& v){
 
   out << v.x() << " " << v.y() << " "<<v.z();

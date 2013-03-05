@@ -46,10 +46,19 @@ public:
     return sqrt(m_x*v.m_x + m_y*v.m_y + m_z*v.m_z);
   }
 
+  // renvoie le max entre le vecteur courant et v
+  static void max(const vec3& a, const vec3& b, vec3& res);
+  inline void max(const vec3& v, vec3& res) const{
+    res.m_x =std::max(m_x, v.m_x);
+    res.m_y =std::max(m_y, v.m_y);
+    res.m_z =std::max(m_z, v.m_z);
+  }
+
   // renvoie un vecteur de double contigus [x|y|z] alloué dans le tas
   double* constData() const;
   // renvoie la version normalisée du vecteur
   void normalized(vec3& res) const;
+
   // normalise le vecteur
   inline void normalize(){
     double l;

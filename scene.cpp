@@ -22,8 +22,8 @@ Scene::~Scene(){
 void Scene::loadDefault(){
   m_camera.move(1000,1000,1000);
   m_camera.look(100,100,100);
-  m_object.push_back(new Sphere(vec3(0, 0, 0), 30));
-  m_light.push_back(new Light(0, 0, 3));
+  m_object.push_back(new Sphere(vec3(), 130));
+  m_light.push_back(new Light(0, 0, 1000));
   m_width =WIDTH;
   m_height =HEIGHT;
 }

@@ -82,7 +82,7 @@ void Camera::computeUV(){
   }
 
   m_view.cross(m_up, m_u);
-  m_view.cross(m_u, m_v);
+  m_u.cross(m_view, m_v);
 
   m_u.normalize();
   m_v.normalize();

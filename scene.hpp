@@ -96,7 +96,7 @@ public:
       if(intersect(shadowRay, intersection, object, i, t) == NULL){
 	normal =object->normal(ray, intersection);
 
-	color += Color::computePhongBRDF(shadowRay, normal, m_camera.view(), object);
+	color +=Color::computePhongBRDF(shadowRay, normal, m_camera.view(), object, (*m_iteLight));
       }
     }
 

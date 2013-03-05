@@ -12,22 +12,22 @@ vec3 Color::computeBackgroundColor(double ligne, double height){
   return color;
 }
 
-vec3 Color::computeLambertBRDF(const vec3& lightRay, const vec3& normal, const Object* object){
+vec3 Color::computeLambertBRDF(const vec3& lightRay, const vec3& normal, const Object* object, const Light* light){
   vec3 color;
 
-  color =object->diffuse() * normal.dot(lightRay);
+  color =light->diffuse() * object->diffuse() * normal.dot(lightRay);
 
   return color;
 }
 
-vec3 Color::computePhongBRDF(const vec3& lightRay, const vec3& normal, const vec3& view, const Object* object){
+vec3 Color::computePhongBRDF(const vec3& lightRay, const vec3& normal, const vec3& view, const Object* object, const Light* light){
   vec3 color, r;
   double t;
 
-  color =computeLambertBRDF(lightRay, normal, object);
+  color =computeLambertBRDF(lightRay, normal, object, light);
   r =2*lightRay.dot(normal)*normal - lightRay;
   t =r.dot(view);
-  color +=object->specular() * pow(t, object->shininess());
+  color +=light->specular() * object->specular() * pow(t, object->shininess());
 
   return color;
 }

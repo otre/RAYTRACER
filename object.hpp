@@ -10,11 +10,11 @@ class Object{
   // coefficient de transmission de l'objet
   double m_transmittance;
   // coefficient ambiant
-  vec3 m_ambient;
+  double m_ambient;
   // coefficient diffus
-  vec3 m_diffuse;
+  double m_diffuse;
   // coefficient speculaire
-  vec3 m_specular;
+  double m_specular;
   // coefficient de brillance
   double m_shininess;
 
@@ -44,17 +44,17 @@ class Object{
   }
 
   // renvoie le coefficient ambiant
-  inline vec3 ambient() const{
+  inline double ambient() const{
     return m_ambient;
   }
 
   // renvoie le coefficient diffus
-  inline vec3 diffuse() const{
+  inline double diffuse() const{
     return m_diffuse;
   }
 
   // renvoie le coefficient speculaire
-  inline vec3 specular() const{
+  inline double specular() const{
     return m_specular;
   }
 
