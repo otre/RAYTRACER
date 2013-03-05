@@ -15,6 +15,8 @@ private:
   vec3 m_view;
   // distance au premier plan (zoom)
   double m_distance;
+  // champ maximal de vision de la camera
+  double m_far;
   // la direction d'observation est-elle initialisée?
   bool m_isViewInitialized;
 
@@ -25,6 +27,9 @@ private:
   void computeUV();
 
 public:
+  // champ maximal par defaut de la camera
+  static const double FAR;
+
   // construit une camera standard
   Camera();
   // construit la camera a partir de position et de l'origine
@@ -52,13 +57,23 @@ public:
   void project(unsigned int width, unsigned int height, vec3& u, vec3& v, vec3& origin);
 
   // renvoie la position de la camera
-  inline vec3& position(){
+  inline vec3 position() const{
     return m_position;
   }
 
   // renvoie la cible de la camera
-  inline vec3& target(){
+  inline vec3 target() const{
     return m_target;
+  }
+
+  // renvoie le vecteur de vue
+  inline vec3 view() const{
+    return m_view;
+  }
+
+  // renvoie le champ maximal de vision de la camera
+  inline double far() const{
+    return m_far;
   }
 };
 

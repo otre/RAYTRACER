@@ -27,29 +27,35 @@ public:
   static const double EPSILON;
 
   // Produit vectoriel
-  static void cross(vec3& u, vec3& v, vec3& res);
-  inline void cross(const vec3& v, vec3& res){
+  static void cross(const vec3& u, const vec3& v, vec3& res);
+  inline void cross(const vec3& v, vec3& res) const{
     res.m_x =m_y*v.m_z - m_z*v.m_y;
     res.m_y =m_z*v.m_x - m_x*v.m_z;
     res.m_z =m_x*v.m_y - m_y*v.m_x;
   }
   
   // Produit scalaire
-  static double dot(vec3& u, vec3& v);
-  inline double dot(const vec3& v){
+  static double dot(const vec3& u, const vec3& v);
+  inline double dot(const vec3& v) const{
     return m_x*v.m_x + m_y*v.m_y + m_z*v.m_z;
   }
 
+  // renvoie la distance entre deux points
+  static double distance(const vec3& u, const vec3& v);
+  inline double distance(const vec3& v){
+    return sqrt(m_x*v.m_x + m_y*v.m_y + m_z*v.m_z);
+  }
+
   // renvoie un vecteur de double contigus [x|y|z] alloué dans le tas
-  double* constData();
+  double* constData() const;
   // renvoie la version normalisée du vecteur
-  void normalized(vec3& res);
+  void normalized(vec3& res) const;
   // normalise le vecteur
   inline void normalize(){
     double l;
     
     l =length();
-    if(!isOne(l)){
+    if(l != 1){
       m_x /=l;
       m_y /=l;
       m_z /=l;
@@ -57,7 +63,7 @@ public:
   }
 
   // renvoie la norme du vecteur
-  inline double length(){
+  inline double length() const{
     return sqrt(m_x*m_x + m_y*m_y + m_z*m_z);
   }
 
@@ -71,42 +77,40 @@ public:
   // initialise le vecteur courant par le vecteur v
   vec3& operator=(const vec3& v);
   // additionne le vecteur v au vecteur courant
-  vec3& operator+(const vec3& v);
-  // soustraie le vecteur v au vecteur courant
-  vec3& operator-(const vec3& v);
-  // multiplie le vecteur courant par un scalaire
-  vec3& operator*(double d);
-  friend vec3& operator*(double d, vec3& v);
-  // divise le vecteur courant par un scalaire
-  vec3& operator/(double d);
-  friend vec3& operator/(double d, vec3& v);
+  vec3& operator+=(const vec3& v);
+  // renvoie l'addition entre le vecteur v et le vecteur courant
+  vec3 operator+(const vec3& v) const;
+  // renvoie la soustraction entre le vecteur v et le vecteur courant
+  vec3 operator-(const vec3& v) const;
+  // renvoie la multiplication du vecteur courant par un scalaire
+  vec3 operator*(double d) const;
+  friend vec3 operator*(double d, const vec3& v);
+  // renvoie la division du vecteur courant par un scalaire
+  vec3 operator/(double d) const;
+  friend vec3 operator/(double d, const vec3& v);
   // renvoie la chaine d'informations du vecteur
   friend std::ostream& operator<<(std::ostream& out, vec3& v);
   // saisie le vecteur
   friend std::istream& operator>>(std::istream& in, vec3& v);
 
   // teste l'approximation du zero de d 
-  inline bool isZero(double d){
-    return (fabs(d) < EPSILON);
-  }
+  bool isZero(double d) const;
 
   // teste l'approximation du zero de d 
-  inline bool isOne(double d){
-    return (fabs(d-1) < EPSILON);
-  }
-
+  bool isOne(double d) const;
+  
   // renvoie la composante x du vecteur
-  inline double x(){
+  inline double x() const{
     return m_x;
   }
 
   // renvoie la composante y du vecteur
-  inline double y(){
+  inline double y() const{
     return m_y;
   }
 
   // renvoie la composante z du vecteur
-  inline double z(){
+  inline double z() const{
     return m_z;
   }
 

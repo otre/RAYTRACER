@@ -1,6 +1,7 @@
 #ifndef RAYTRACER_H
 #define RAYTRACER_H
 
+#include "color.hpp"
 #include "scene.hpp"
 #include "contiguousdatamatrix.hpp"
 

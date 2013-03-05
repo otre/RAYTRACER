@@ -14,12 +14,14 @@ ContiguousDataMatrix<vec3>& RayTracer::render(){
 
 void RayTracer::renderToPPM(char file[]){
   std::ofstream out;
-  vec3 color, origin, eye, u, v;
+  Object* o;
+  double t;
+  vec3 background, color, origin, eye, u, v;
+  vec3 i;
 
-  color.fill(255);
-  eye =m_scene.position();
   out.open(file);
-  m_scene.project(u, v, origin);
+  m_scene.cameraPosition(eye);
+  m_scene.cameraProjection(u, v, origin);
 
   if(out){
     // En-tête du fichier
@@ -27,11 +29,22 @@ void RayTracer::renderToPPM(char file[]){
     out << m_scene.width() << " " << m_scene.height() << std::endl;
     out << 255 << std::endl;
 
-    for(unsigned int i=0; i<m_scene.width(); i++){
-      for(unsigned int j=0; j<m_scene.height(); j++){
-	m_ray =(origin + i*u + j*v) - eye;
+    for(unsigned int ligne=0; ligne<m_scene.height(); ligne++){
+      background =Color::computeBackgroundColor(ligne, m_scene.height());
+      for(unsigned int colonne=0; colonne<m_scene.width(); colonne++){
+	m_ray =(origin + colonne*u + ligne*v) - eye;
+	m_ray.normalize();
 
-	out << color  << " ";
+	o =m_scene.intersect(m_ray, eye, NULL, i, t);
+	if(o != NULL){
+	  color =m_scene.shade(m_ray, i, o);
+	  color =color * 255;
+	  color.toInt();
+	  out << color  << " ";
+	}
+	else{
+	  out << background  << " ";
+	}
       }
       out << std::endl;
     }
